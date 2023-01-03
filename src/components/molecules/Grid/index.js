@@ -1,12 +1,12 @@
 import React from 'react'
 import './grid.css'
-import listImages from '../../../dummy/imageList'
 
-function Grid() {
+
+function Grid({data}) {
   return (
     <div className='container-grid'>
         <div className="card-list">
-        {listImages.data.map((pic) => (
+        {data.map((pic) => (
           <div className="card" key={pic.id}>
             <img
               className="card--image"

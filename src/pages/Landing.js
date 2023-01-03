@@ -1,11 +1,10 @@
 import React from "react";
-import Grid from "components/molecules/Grid";
-
+import ListImages from "components/organisms/ListImages";
 function Landing() {
     return (
         <>
             <div className="container mx-auto my-5">
-                <Grid />
+                <ListImages />
             </div>
         </>
     );
