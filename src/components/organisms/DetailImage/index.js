@@ -34,7 +34,7 @@ function DetailImage() {
     }, []);
     // console.log('dataCats', dataCats)
   return (
-    <div className='border rounded-lg border-2 p-5 flex flex-col '>
+    <div className='border rounded-lg border-2 p-5 mx-3 flex flex-col '>
         <Buttons href='/' type='link' className='mt-3 bg-sky-400 rounded-lg text-white p-2 text-lg shadow mb-10 w-6/12 md:w-5/12 lg:w-2/12'> 
             <div className='flex justify-center items-center space-x-3'>
             <FaChevronLeft fontSize={20} />
@@ -47,7 +47,7 @@ function DetailImage() {
         ) : (
             Object.keys(dataCats).length > 0 && (
                 <div className='px-2'>
-                    <div className="flex space-x-3 flex-col lg:flex-row">
+                    <div className="flex lg:space-x-3 flex-col lg:flex-row">
                         <ImageHeader id={dataCats.reference_image_id} />
                         <div>
                             <div className="flex flex-col lg:flex-row space-x-3 text-md lg:text-xl font-bold">

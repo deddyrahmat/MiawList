@@ -8,7 +8,7 @@ import Search from 'components/molecules/Search';
 
 function ListImages() {
     
-    const [limit, setLimit] = useState(8);
+    const [limit, setLimit] = useState(10);
     // const [page, setPage] = useState(0);
     const [dataCats, setDataCats] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -67,7 +67,7 @@ function ListImages() {
     }, [limit]);
 
     const handleLimit = useCallback(() => {
-        setLimit(limit + 8)
+        setLimit(limit + 10)
     },[limit])
 
     
@@ -84,7 +84,7 @@ function ListImages() {
                     <Buttons onClick={() => prosesList()} className='mt-3 bg-sky-400 rounded-lg text-white p-2 text-lg shadow block text-center w-5/12 lg:w-3/12 mx-auto'>Back to home</Buttons>
                 </>
             )}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid sm:grid-cols-2 xl:grid-cols-5 gap-4">
                 {
                     dataCats?.length > 0 && (
                         dataCats.map((cat, index) => 
@@ -94,7 +94,7 @@ function ListImages() {
                 }
             </div>
             {
-                dataCats.length >7 && (
+                dataCats.length > 9 && (
                     <Buttons onClick={() => {handleLimit()}} isDisabled={isLoading} className={`mt-5 w-4/12 mx-auto block text-center flex-1 rounded-lg text-white py-2 text-xl font-bold ${isLoading ? 'bg-slate-400 pointer-events-none' : 'bg-sky-400'}`}>
                         {
                             isLoading ? (<FaSpinner className='animate-spin mx-auto' />) : ("Load More")
