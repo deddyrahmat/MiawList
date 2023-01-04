@@ -32,7 +32,7 @@ function DetailImage() {
     useEffect(() => {
         prosesDetail();
     }, []);
-    console.log('dataCats', dataCats)
+    // console.log('dataCats', dataCats)
   return (
     <div className='border rounded-lg border-2 p-5 flex flex-col '>
         <Buttons href='/' type='link' className='mt-3 bg-sky-400 rounded-lg text-white p-2 text-lg shadow mb-10 w-6/12 md:w-5/12 lg:w-2/12'> 
