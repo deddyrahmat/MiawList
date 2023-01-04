@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { FaSpinner } from "react-icons/fa";
 
 import ApiCats from 'config/Endpoint/cats'
 import Card from 'components/molecules/Card';
@@ -7,7 +8,7 @@ import Search from 'components/molecules/Search';
 
 function ListImages() {
     
-    const [limit, setLimit] = useState(10);
+    const [limit, setLimit] = useState(8);
     const [page, setPage] = useState(0);
     const [dataCats, setDataCats] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -17,7 +18,6 @@ function ListImages() {
 
     const handleKeyword = (e) => {
         setKeyword(e.target.value);
-        console.log(e.target.value);
     }
     const handleKeywordKeydown = (e) => {
         if (e.key === 'Enter') {
@@ -34,7 +34,7 @@ function ListImages() {
                 setDataCats(response);
                 setIsLoadingSearch(false);
             }else{
-                prosesList()
+                setDataCats([]);
                 setIsLoadingSearch(false)
                 setStatusSearch("Cats Not Found")
             }
@@ -65,7 +65,7 @@ function ListImages() {
     }, [limit]);
 
     const handleLimit = () => {
-        setLimit(limit + 10)
+        setLimit(limit + 8)
     }
 
     
@@ -77,7 +77,7 @@ function ListImages() {
         
         <div className="container mx-auto my-10 px-2">
             {statusSearch && (
-                <p className='text-red-600 text-xl font-bold mb-5'>{statusSearch}</p>
+                <p className='text-red-600 text-2xl  lg:text-4xl font-bold mb-5 text-center'>{statusSearch}</p>
             )}
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {
@@ -89,10 +89,10 @@ function ListImages() {
                 }
             </div>
             {
-                dataCats.length > 9 && (
+                dataCats.length >7 && (
                     <Buttons onClick={() => {handleLimit()}} isDisabled={isLoading} className={`mt-5 w-4/12 mx-auto block text-center flex-1 rounded-lg text-white py-2 text-xl font-bold ${isLoading ? 'bg-slate-400 pointer-events-none' : 'bg-sky-400'}`}>
                         {
-                            isLoading ? (<p>Loading...</p>) : ("Load More")
+                            isLoading ? (<FaSpinner className='animate-spin mx-auto' />) : ("Load More")
                         }
                     </Buttons>
                 ) 

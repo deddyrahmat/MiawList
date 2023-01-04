@@ -1,5 +1,6 @@
 import React from 'react'
 import Buttons from 'components/atoms/Buttons';
+import { FaSpinner } from "react-icons/fa";
 
 function Search({handleKeywordKeydown,handleKeyword, handleSearch, isLoadingSearch}) {
   return (
@@ -9,7 +10,7 @@ function Search({handleKeywordKeydown,handleKeyword, handleSearch, isLoadingSear
             <input type="text" className='px-2 py-1 w-10/12 mx-auto bg-white border h-12 md:rounded-lg shadow' onKeyDown={(event) => handleKeywordKeydown(event)} onChange={(event) => handleKeyword(event)} placeholder="Search name cat" />
             <Buttons isDisabled={isLoadingSearch} className={`text-white h-12 flex items-center md:rounded-lg text-lg px-5 font-semibold shadow ${isLoadingSearch ? 'bg-slate-400 pointer-events-none' : 'bg-sky-400'}`} onClick={() => handleSearch()}>
                 {
-                    isLoadingSearch ? ("Loading..") : ("Search")
+                    isLoadingSearch ? (<FaSpinner className='animate-spin mx-auto' />) : ("Search")
                 }
             </Buttons>
         </div>
