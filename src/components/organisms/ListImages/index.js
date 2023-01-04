@@ -9,7 +9,7 @@ import Search from 'components/molecules/Search';
 function ListImages() {
     
     const [limit, setLimit] = useState(8);
-    const [page, setPage] = useState(0);
+    // const [page, setPage] = useState(0);
     const [dataCats, setDataCats] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [keyword, setKeyword] = useState("");
@@ -48,7 +48,7 @@ function ListImages() {
     const prosesList = async () => {
         setIsLoading(true);
         try {
-            const response = await ApiCats.limit(limit, page);
+            const response = await ApiCats.limit(limit, 0);
 
             if (response) {
                 setDataCats(response);
