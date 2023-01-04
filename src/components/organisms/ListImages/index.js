@@ -53,6 +53,7 @@ function ListImages() {
             if (response) {
                 setDataCats(response);
                 setIsLoading(false);
+                setStatusSearch("");
             }
         } catch (error) {
             console.log("Your System ", error);
@@ -77,7 +78,10 @@ function ListImages() {
         
         <div className="container mx-auto my-10 px-2">
             {statusSearch && (
-                <p className='text-red-600 text-2xl  lg:text-4xl font-bold mb-5 text-center'>{statusSearch}</p>
+                <>
+                    <p className='text-red-600 text-2xl  lg:text-4xl font-bold mb-5 text-center'>{statusSearch}</p>
+                    <Buttons onClick={() => prosesList()} className='mt-3 bg-sky-400 rounded-lg text-white p-2 text-lg shadow block text-center w-5/12 lg:w-3/12 mx-auto'>Back to home</Buttons>
+                </>
             )}
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {
