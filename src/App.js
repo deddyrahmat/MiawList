@@ -1,12 +1,14 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Landing from "pages/Landing";
+import Page404 from "pages/Page404";
 
 function App() {
     return (
         <Router>
             <Routes>
-                <Route exact path="/" element={<Landing />} />
+                <Route path="/" element={<Landing />} />
+                <Route path="/*" element={<Page404 />} />
             </Routes>
         </Router>
     );
