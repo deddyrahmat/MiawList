@@ -1,11 +1,22 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, memo} from 'react';
 import {  FaSpinner } from "react-icons/fa";
+import Modal  from 'components/atoms/Modal';
 
 import ApiCats from 'config/Endpoint/cats'
 
-function ImageHeader({id}) {
+const ImageHeader = memo(({id}) => {
     const [dataCats, setDataCats] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [open, setOpen] = useState(false);
+    const [imageModal, setImageModal] = useState("");
+
+    const handleModal = (data) => {
+        setImageModal(data)
+        handleClose();
+    }
+    const handleClose = () => {
+        setOpen(!open);
+    }
     
     const prosesImage = async () => {
         setIsLoading(true);
@@ -28,15 +39,18 @@ function ImageHeader({id}) {
     // console.log('dataCats image', dataCats)
   return (
     <>
+        <Modal open={open} handleClose={handleClose}>
+            <img src={imageModal} alt={imageModal} className="object-cover object-center w-full h-full" />
+        </Modal>
         {
             isLoading ? (<FaSpinner className='animate-spin mx-auto' size={30} />) : (
                 <div className="w-[300px] md:w-[400px] border rounded-lg border-2 p-5">
-                    <img src={dataCats.url} alt="cat" className="w-full h-full object-cover object-center" />
+                    <img src={dataCats.url} alt="cat" className="w-full h-full object-cover object-center cursor-pointer" onClick={() => handleModal(dataCats.url)} />
                 </div>
             )
         }
     </>
   )
-}
+});
 
 export default ImageHeader
