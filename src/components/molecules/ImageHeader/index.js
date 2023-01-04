@@ -40,7 +40,9 @@ const ImageHeader = memo(({id}) => {
   return (
     <>
         <Modal open={open} handleClose={handleClose}>
-            <img src={imageModal} alt={imageModal} className="object-cover object-center w-full h-full" />
+            <div className="max-h-[80vh]">
+                <img src={imageModal} alt={imageModal} className="object-contain object-center w-full h-full" />
+            </div>
         </Modal>
         {
             isLoading ? (<FaSpinner className='animate-spin mx-auto' size={30} />) : (

@@ -41,7 +41,9 @@ const CardList = memo(({data}) => {
     <>
         <p className='text-md lg:text-xl font-bold mt-5 mb-3'>More Images : </p>
         <Modal open={open} handleClose={handleClose}>
-            <img src={imageModal} alt={imageModal} className="object-cover object-center w-full h-full" />
+            <div className="h-full lg:h-[80vh]">
+                <img src={imageModal} alt={imageModal} className="object-contain object-center w-full h-full" />
+            </div>
         </Modal>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {
