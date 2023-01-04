@@ -19,7 +19,7 @@ const Card = memo(({data}) => {
                     {data.description}
                 </p>
             </div>
-            <Buttons className='mt-3 flex-1 bg-sky-400 rounded-lg text-white py-2 text-lg shadow'>
+            <Buttons type="link" href={`/detail/${data.id}`} className='mt-3 flex-1 bg-sky-400 rounded-lg text-white py-2 text-lg shadow'>
                 <div className="flex justify-center items-center space-x-3">
                     <FaPaw size={20} />
                     <span>Detail</span>

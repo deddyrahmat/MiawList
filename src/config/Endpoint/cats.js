@@ -19,4 +19,12 @@ export default {
         axios
             .get(`/breeds/${id}`)
             .then((res) => res.data),
+    imageHeader: (id) =>
+        axios
+            .get(`/images/${id}`)
+            .then((res) => res.data),
+    imageList: (id) =>
+        axios
+            .get(`/images/search?format=json&limit=4&breed_ids=${id}`)
+            .then((res) => res.data),
 }
