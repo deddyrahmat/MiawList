@@ -18,7 +18,7 @@ function Card({data}) {
                     {data.description}
                 </p>
             </div>
-            <Buttons className='mt-3 flex-1 bg-sky-400 rounded-lg text-white py-2 text-lg'>Detail</Buttons>
+            <Buttons className='mt-3 flex-1 bg-sky-400 rounded-lg text-white py-2 text-lg shadow'>Detail</Buttons>
         </div>
     </>
   )
