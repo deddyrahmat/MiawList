@@ -66,6 +66,9 @@ function DetailImage() {
             
             <p className='text-md lg:text-xl font-bold mt-5'>Description : </p>
             <p className='mb-5 text-md lg:text-xl'>{dataCats.description}</p>
+            <p className='text-md lg:text-xl font-bold mt-5'>Source : </p>
+            <Buttons type="link" href={dataCats.wikipedia_url} isExternal={true} target="_blank" className="text-blue-400">- Wikipedia</Buttons>
+
             <CardList data={dataCats.id} />
             </div>
         )}
