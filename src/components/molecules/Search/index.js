@@ -1,8 +1,9 @@
-import React from 'react'
+import React,{memo} from 'react'
 import Buttons from 'components/atoms/Buttons';
 import { FaSpinner,FaSearch } from "react-icons/fa";
 
-function Search({handleKeywordKeydown,handleKeyword, handleSearch, isLoadingSearch}) {
+const Search = memo(({handleKeywordKeydown,handleKeyword, handleSearch, isLoadingSearch}) => {
+  // console.log('data search')
   return (
     <div className="relative w-full h-[300px] lg:h-[500px]">
         <img src="https://images.unsplash.com/photo-1515002246390-7bf7e8f87b54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="background" className='object-cover object-center w-full h-full' />
@@ -19,6 +20,6 @@ function Search({handleKeywordKeydown,handleKeyword, handleSearch, isLoadingSear
         </div>
     </div>
   )
-}
+})
 
 export default Search

@@ -1,9 +1,9 @@
-import React from 'react'
+import React, {memo} from 'react'
 import propTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
 
-function Buttons(props) {
+const Buttons = memo((props) => {
 
     const onClick = () => {
         // cek dulu props yang dikirim, jika ada baru eksekusi
@@ -40,7 +40,7 @@ function Buttons(props) {
   return (
     <button type={props.typeButton} className={props.className} style={props.style} onClick={onClick} >{props.children}</button>
   )
-}
+})
 
 export default Buttons
 

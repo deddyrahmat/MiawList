@@ -1,11 +1,11 @@
 import Buttons from 'components/atoms/Buttons'
-import React from 'react'
+import React, {memo} from 'react'
 import { FaPaw } from "react-icons/fa";
 
 import './card.css'
 
-function Card({data}) {
-    // console.log('data', data)
+const Card = memo(({data}) => {
+    // console.log('data card')
   return (
     <>
         <div className="border rounded-lg border-2 p-5 flex flex-col ">
@@ -28,6 +28,6 @@ function Card({data}) {
         </div>
     </>
   )
-}
+});
 
 export default Card

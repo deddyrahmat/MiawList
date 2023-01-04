@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import { FaSpinner } from "react-icons/fa";
 
 import ApiCats from 'config/Endpoint/cats'
@@ -16,14 +16,15 @@ function ListImages() {
     const [isLoadingSearch, setIsLoadingSearch] = useState(false);
     const [statusSearch, setStatusSearch] = useState("");
 
-    const handleKeyword = (e) => {
+    const handleKeyword = useCallback((e) => {
         setKeyword(e.target.value);
-    }
+    },[])
+
     const handleKeywordKeydown = (e) => {
         if (e.key === 'Enter') {
             handleSearch();
         }
-    }
+    };
 
     const handleSearch = async () => {
         setIsLoadingSearch(true);
@@ -59,19 +60,19 @@ function ListImages() {
             console.log("Your System ", error);
             setIsLoading(false);
         }
-    };
+    }
 
     useEffect(() => {
         prosesList();
     }, [limit]);
 
-    const handleLimit = () => {
+    const handleLimit = useCallback(() => {
         setLimit(limit + 8)
-    }
+    },[limit])
 
     
 
-    console.log('dataCats', dataCats)
+    // console.log('dataCats', dataCats)
   return (
     <>
         <Search handleKeywordKeydown={handleKeywordKeydown} handleKeyword={handleKeyword}  handleSearch={handleSearch}  isLoadingSearch={isLoadingSearch} />
