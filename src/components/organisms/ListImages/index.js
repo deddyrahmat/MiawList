@@ -71,7 +71,7 @@ function ListImages() {
 
     
 
-    // console.log('dataCats', dataCats)
+    console.log('dataCats', dataCats)
   return (
     <>
         <Search handleKeywordKeydown={handleKeywordKeydown} handleKeyword={handleKeyword}  handleSearch={handleSearch}  isLoadingSearch={isLoadingSearch} />

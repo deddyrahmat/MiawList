@@ -15,4 +15,8 @@ export default {
         axios
             .get(`/breeds?limit=${limit}&page=${page}`)
             .then((res) => res.data),
+    detail: (id) =>
+        axios
+            .get(`/breeds/${id}`)
+            .then((res) => res.data),
 }

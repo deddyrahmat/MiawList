@@ -1,5 +1,6 @@
 import Buttons from 'components/atoms/Buttons'
 import React from 'react'
+import { FaPaw } from "react-icons/fa";
 
 import './card.css'
 
@@ -18,7 +19,12 @@ function Card({data}) {
                     {data.description}
                 </p>
             </div>
-            <Buttons className='mt-3 flex-1 bg-sky-400 rounded-lg text-white py-2 text-lg shadow'>Detail</Buttons>
+            <Buttons className='mt-3 flex-1 bg-sky-400 rounded-lg text-white py-2 text-lg shadow'>
+                <div className="flex justify-center items-center space-x-3">
+                    <FaPaw size={20} />
+                    <span>Detail</span>
+                </div>
+            </Buttons>
         </div>
     </>
   )
