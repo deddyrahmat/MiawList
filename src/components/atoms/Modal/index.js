@@ -1,5 +1,7 @@
 import React from "react";
+import propTypes from "prop-types";
 import { MdClose } from "react-icons/md";
+
 function Modal({handleClose, open, children}) {
     return (
         <>
@@ -26,3 +28,8 @@ function Modal({handleClose, open, children}) {
 }
 
 export default Modal;
+
+Modal.propTypes = {
+    handleClose : propTypes.func,
+    open : propTypes.bool,
+}
