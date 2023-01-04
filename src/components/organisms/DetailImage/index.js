@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom';
-import { FaChevronLeft, FaSpinner } from "react-icons/fa";
+import { FaChevronLeft, FaChevronUp, FaChevronDown, FaSpinner } from "react-icons/fa";
 
 
 import ApiCats from 'config/Endpoint/cats'
@@ -11,6 +11,11 @@ import Buttons from 'components/atoms/Buttons';
 function DetailImage() {
     const [dataCats, setDataCats] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [descStatus, setDescStatus] = useState(false);
+
+    const handleDesc = () => {
+        setDescStatus(!descStatus);
+    }
 
     let { id } = useParams();
     
@@ -65,12 +70,26 @@ function DetailImage() {
                         </div>
                     </div>
                     
-                    <p className='text-md lg:text-xl font-bold mt-5'>Description : </p>
-                    <p className='mb-5 text-md lg:text-xl'>{dataCats.description}</p>
-                    <p className='text-md lg:text-xl font-bold mt-5'>Source : </p>
-                    <Buttons type="link" href={dataCats.wikipedia_url} isExternal={true} target="_blank" className="text-blue-400">- Wikipedia</Buttons>
+                    <div className="flex items-center justify-between bg-slate-400 px-2 py-2 rounded-lg mt-5 mb-1">
+                        <p className='text-md lg:text-xl font-bold text-white'>Description : </p>
+                        {
+                            descStatus ? (
+                                <FaChevronUp size={20} className="text-white cursor-pointer" onClick={() => handleDesc()} />
+                                ) : (
+                                <FaChevronDown size={20} className="text-white cursor-pointer" onClick={() => handleDesc()} />
+                            )
+                        }
+                    </div>
+                    {
+                        descStatus && (
+                            <p className='text-md lg:text-xl px-2'>{dataCats.description}</p>
+                        )
+                    }
 
                     <CardList data={dataCats.id} />
+
+                    <p className='text-md lg:text-xl font-bold mt-5'>Source : </p>
+                    <Buttons type="link" href={dataCats.wikipedia_url} isExternal={true} target="_blank" className="text-blue-400">- Wikipedia</Buttons>
                 </div>
             )
         )}

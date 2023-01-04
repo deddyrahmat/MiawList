@@ -1,6 +1,6 @@
 import React, {memo, useState, useEffect} from 'react'
 import ApiCats from 'config/Endpoint/cats'
-import {  FaSpinner } from "react-icons/fa";
+import { FaChevronUp, FaChevronDown, FaSpinner } from "react-icons/fa";
 import Modal from 'components/atoms/Modal';
 
 const CardList = memo(({data}) => {
@@ -15,6 +15,13 @@ const CardList = memo(({data}) => {
     }
     const handleClose = () => {
         setOpen(!open);
+    }
+
+
+    const [descStatus, setDescStatus] = useState(false);
+
+    const handleDesc = () => {
+        setDescStatus(!descStatus);
     }
     
     const prosesImage = async () => {
@@ -39,13 +46,23 @@ const CardList = memo(({data}) => {
     // console.log('dataCats list image in car', dataCats)
   return (
     <>
-        <p className='text-md lg:text-xl font-bold mt-5 mb-3'>More Images : </p>
+        <div className="flex items-center justify-between bg-slate-400 px-2 py-2 rounded-lg my-5">
+            <p className='text-md lg:text-xl font-bold text-white'>More Images : </p>
+            {
+                !descStatus ? (
+                    <FaChevronUp size={20} className="text-white cursor-pointer" onClick={() => handleDesc()} />
+                    ) : (
+                    <FaChevronDown size={20} className="text-white cursor-pointer" onClick={() => handleDesc()} />
+                )
+            }
+        </div>
         <Modal open={open} handleClose={handleClose}>
             <div className="h-full lg:h-[80vh]">
                 <img src={imageModal} alt={imageModal} className="object-contain object-center w-full h-full" />
             </div>
         </Modal>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <div className={`${descStatus ? "hidden" : "grid"} sm:grid-cols-2 lg:grid-cols-4 gap-4`}>
         {
             isLoading ? (
                 <FaSpinner className='animate-spin mx-auto' size={40} />
